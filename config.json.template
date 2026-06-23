@@ -1,6 +1,6 @@
 {
     "working_directory": "./active",
-    "discord_token": "TOKEN GOES HERE",
+    "discord_token": "YOUR_DISCORD_BOT_TOKEN",
     "discord_tagline": "good evening",
     "message_search_count": 15,
     "command_chain_limit": 3,
@@ -20,20 +20,24 @@
         "help": 3
     },
     "custom_guild_timeouts": {
-        // "some guild id here": {
-        //     "default": 0
+        // "GUILD_ID": {
+        //     "default": 0,
+        //     "destroy": 10,
+        //     "concat": 12,
+        //     "download": 15,
+        //     "help": 1
         // }
     },
     "custom_user_timeouts": {
-        // "some user id here": {
-            // "ghost": true, //has no effect on command timeouts
+        // "USER_ID": {
+            // "ghost": false,
             // "max_chain": 50
         // }
     },
-    "donor_guild_id": "donator guild id",
+    "donor_guild_id": "YOUR_DONOR_GUILD_ID",
     "donor_guild_check_seconds": 600,
     "donor_teir_roles": {
-        "some role id here": {
+        "ROLE_ID": {
             "user": {
                 "max_chain": 5,
                 "timeout_multiplier": 0.5
