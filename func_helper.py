@@ -63,7 +63,7 @@ class Action:
         self.parse = parse or (lambda x: {"result": x}) # Function to apply on function result
         self.check = check or (lambda x: True) # Function to check if function result is successful
         self.check_before_parse = check_before_parse # Should we only parse before or after success checker
-        self.fails_task = fails_task # Does action fail terminate tast?
+        self.fails_task = fails_task # Does action fail terminate task?
         self.success_action = success_action # Action to perform on success
         self.fail_action = fail_action # Action to perform on failure
         self.skip_task_success_handler = skip_task_success_handler # On success, ignore task's general success handler
@@ -91,7 +91,7 @@ class Action:
                 else:
                     result = value
             else:
-                result = self.parse(result)
+                result = self.parse(value)
                 checked_value = self.check(result)
             
             if checked_value:
@@ -99,7 +99,7 @@ class Action:
             else:
                 return action_result(False, result) # Return failure
         except Exception as err:
-            # return execution faliure 
+            # return execution failure
             return action_result(False, err)
     
     def __str__(self):
@@ -116,7 +116,7 @@ class Task:
         self.success_handler = success_handler or (lambda name, val: ()) # Generic function to perform on action success 
         self.fail_handler = fail_handler or (
             lambda name, err: print(f"{name}: Error!", ''.join(traceback.format_exception(err)), self)
-        ) # Generic function to perform on  action faliure 
+        ) # Generic function to perform on action failure
         self.async_handler = async_handler # Handler to execute async functions
         self.persist_result_values = persist_result_values # Does the resulting value dictionary keep values from previous actions or only last action
         
